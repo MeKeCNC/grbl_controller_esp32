@@ -837,7 +837,7 @@ void drawDataOnInfoPage() { // to do : affiche les données sur la page d'info
     tft.setTextFont( 2 );
     tft.setTextSize(1) ;           
     tft.setTextPadding (0) ;      // expect to clear 70 pixel when drawing text or 
-    tft.drawString( __WPOS , 70 , line ) ;     // affiche un texte
+    tft.drawString( __WPOS , 90 , line ) ;     // affiche un texte
     tft.drawString( __MPOS , 190 , line ) ;     // affiche un texte
     newInfoPage = false ;
   }
@@ -846,16 +846,16 @@ void drawDataOnInfoPage() { // to do : affiche les données sur la page d'info
   tft.setFreeFont (LABELS12_FONT) ;
   tft.setTextSize(1) ;           // char is 2 X magnified => 
   tft.setTextColor(SCREEN_NORMAL_TEXT ,  SCREEN_BACKGROUND ) ;
-  tft.setTextPadding (120) ;      // expect to clear 120 pixel when drawing text or float
-  uint8_t c1 = 120, c2 = c1 + 120 ;
+  tft.setTextPadding (0) ;      //120 expect to clear 120 pixel when drawing text or float
+  uint8_t c1 = 110, c2 = c1 + 100 ;//120
 #ifdef AA_AXIS
   uint8_t lineSpacing1 = 24 ;
 #else 
   uint8_t lineSpacing1 = 34 ; // we have more space for 3 axis
 #endif   
-  line += 20           ; tft.drawFloat( wposXYZA[0] , 2 , c1 , line ); tft.drawFloat( mposXYZA[0] , 2 , c2 , line ); 
-  line += lineSpacing1 ; tft.drawFloat( wposXYZA[1] , 2 , c1 , line ); tft.drawFloat( mposXYZA[1] , 2 , c2 , line );
-  line += lineSpacing1 ; tft.drawFloat( wposXYZA[2] , 2 , c1 , line ); tft.drawFloat( mposXYZA[2] , 2 , c2 , line  ); 
+  line += 20           ; tft.setTextColor( SCREEN_HEADER_TEXT ,  SCREEN_BACKGROUND ); tft.drawString("X" , 0 , line); tft.setTextColor(SCREEN_NORMAL_TEXT ,  SCREEN_BACKGROUND ); tft.drawFloat( wposXYZA[0] , 2 , c1 , line ); tft.drawFloat( mposXYZA[0] , 2 , c2 , line ); 
+  line += lineSpacing1 ; tft.setTextColor( SCREEN_HEADER_TEXT ,  SCREEN_BACKGROUND ); tft.drawString("Y" , 0 , line); tft.setTextColor(SCREEN_NORMAL_TEXT ,  SCREEN_BACKGROUND ); tft.drawFloat( wposXYZA[1] , 2 , c1 , line ); tft.drawFloat( mposXYZA[1] , 2 , c2 , line );
+  line += lineSpacing1 ; tft.setTextColor( SCREEN_HEADER_TEXT ,  SCREEN_BACKGROUND ); tft.drawString("Z" , 0 , line); tft.setTextColor(SCREEN_NORMAL_TEXT ,  SCREEN_BACKGROUND ); tft.drawFloat( wposXYZA[2] , 2 , c1 , line ); tft.drawFloat( mposXYZA[2] , 2 , c2 , line  ); 
 #ifdef AA_AXIS
   line += lineSpacing1 ; tft.drawFloat( wposXYZA[3] , 2 , c1 , line ); tft.drawFloat( mposXYZA[3] , 2 , c2 , line  );
 #endif  
@@ -864,12 +864,12 @@ void drawDataOnInfoPage() { // to do : affiche les données sur la page d'info
   tft.setTextPadding (0) ;
   tft.setTextDatum( TL_DATUM ) ;
   tft.setTextColor(SCREEN_HEADER_TEXT ,  SCREEN_BACKGROUND) ; 
-  line += lineSpacing1 ; tft.drawString(__FEED , 90 , line)  ; tft.drawString(__RPM , 205 , line) ;
+  line += lineSpacing1 ; tft.drawString(__FEED , 80 , line)  ; tft.drawString(__RPM , 190 , line) ;
   tft.setTextColor(SCREEN_NORMAL_TEXT ,  SCREEN_BACKGROUND) ;
-  tft.setTextPadding (80) ;
+  tft.setTextPadding (70) ;
   tft.setTextDatum( TR_DATUM ) ;
-  tft.drawNumber( (long) feedSpindle[0] , 80 , line) ; // here we could add the Feed rate and the spindle rpm
-  tft.drawNumber( (long) feedSpindle[1] , 200 , line) ; // here we could add the Feed rate and the spindle rpm
+  tft.drawNumber( (long) feedSpindle[0] , 70 , line) ; // here we could add the Feed rate and the spindle rpm
+  tft.drawNumber( (long) feedSpindle[1] , 180 , line) ; // here we could add the Feed rate and the spindle rpm
 
 }
 
@@ -1466,4 +1466,3 @@ void fillMsg( const char * msg, uint16_t color) {
   lastMsgColor = color ;
   lastMsgChanged = true ;
 }
-
