@@ -846,7 +846,7 @@ void drawDataOnInfoPage() { // to do : affiche les données sur la page d'info
   tft.setFreeFont (LABELS12_FONT) ;
   tft.setTextSize(1) ;           // char is 2 X magnified => 
   tft.setTextColor(SCREEN_NORMAL_TEXT ,  SCREEN_BACKGROUND ) ;
-  tft.setTextPadding (0) ;      //120 expect to clear 120 pixel when drawing text or float
+  tft.setTextPadding (80) ;      //120 expect to clear 120 pixel when drawing text or float
   uint8_t c1 = 110, c2 = c1 + 100 ;//120
 #ifdef AA_AXIS
   uint8_t lineSpacing1 = 24 ;
